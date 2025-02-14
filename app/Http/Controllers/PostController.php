@@ -8,16 +8,17 @@ class PostController extends Controller
 {
     public function index() 
     {
-        return 'Aquí se mostrarán los posts';
+        return view('posts.index');
     }
 
     public function create() 
     {
-        return 'Aquí se mostrará el formulario para crear posts';
+        return view('posts.create');
     }
 
     public function show($post) 
     {
-        return 'Aquí se mostrará el post ' . $post;
+        //compact('post'); // ['post' => $post]
+        return view('posts.show', ['post' => $post]);
     }
 }
