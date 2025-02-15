@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laravel 11</title>
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
 <body>
-    <h1>Bienvenidos a MHenriquez</h1>
+    <div class="max-w-4xl mx-auto px-4">
+        <x-alert type="danger" class="mb-4">
+            {{-- Contenido variable del componente --}}
+            <x-slot:title>
+                Título
+            </x-slot>
+
+            Contenido del alert
+        </x-alert>
+
+        <p>Hola mundo</p>
+    </div>
 </body>
 </html>
