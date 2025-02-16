@@ -31,16 +31,18 @@ Route::prefix('posts')->name('posts.')->controller(PostController::class)->group
 Route::get('prueba', function () {
     //------------------------------------ Crear registros
     /*$post = Post::create([
-        'title' => 'Título de prueba 1', 
-        'content' => 'Contenido de prueba 1', 
-        'category' => 'Categoría de prueba 1'
+        'title' => 'TíTuLo DE prueBA 4', 
+        'content' => 'Contenido de prueba 4', 
+        'category' => 'Categoría de prueba 4'
     ]);*/
 
     //------------------------------------ Actualizar registros
     /*$post = Post::where('id', 1)->first();
-
+    
     $post->category = 'Desarrollo web';
-    $post->save();*/
+    $post->save();
+
+    $post = Post::where('id', 4)->update(['category' => 'Categoría de prueba 4']);*/
 
     //------------------------------------ Eliminar registros
     //$post_deleted = Post::where('id', 1)->delete();
@@ -51,7 +53,10 @@ Route::get('prueba', function () {
     //$posts = Post::all();*/
 
     //Campos especificados con ordenamiento ascendente
-    $posts = Post::orderBy('category', 'asc')->select('id', 'title', 'category')->get();
+    //$posts = Post::orderBy('category', 'asc')->select('id', 'title', 'category')->get();
 
-    return $posts;
+    //------------------------------------ Encontrar un registro
+    $post = Post::find(4);
+
+    return $post;
 });
