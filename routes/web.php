@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 //------------------------------------ Importa el controlador para poder usarlo
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Models\Post;
 
 //------------------------------------ Si el controlador es de tipo __invoke no es necesario especificarlo
 Route::get('/', HomeController::class);
@@ -25,3 +26,32 @@ Route::prefix('posts')->name('posts.')->controller(PostController::class)->group
 
 //     return  $data;
 // });
+
+//------------------------------------ Eloquent ORM
+Route::get('prueba', function () {
+    //------------------------------------ Crear registros
+    /*$post = Post::create([
+        'title' => 'Título de prueba 1', 
+        'content' => 'Contenido de prueba 1', 
+        'category' => 'Categoría de prueba 1'
+    ]);*/
+
+    //------------------------------------ Actualizar registros
+    /*$post = Post::where('id', 1)->first();
+
+    $post->category = 'Desarrollo web';
+    $post->save();*/
+
+    //------------------------------------ Eliminar registros
+    //$post_deleted = Post::where('id', 1)->delete();
+
+    //------------------------------------ Listar registros
+    /*
+    //Todos
+    //$posts = Post::all();*/
+
+    //Campos especificados con ordenamiento ascendente
+    $posts = Post::orderBy('category', 'asc')->select('id', 'title', 'category')->get();
+
+    return $posts;
+});
