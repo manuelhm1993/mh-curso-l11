@@ -3,10 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory; //Se debe agregar este trait para usar los factories
+    
     /**
      * The attributes that are mass assignable.
      *

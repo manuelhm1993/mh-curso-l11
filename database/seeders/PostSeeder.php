@@ -13,16 +13,7 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        //------------------------------------ Crear 2 posts
-        for ($i=0; $i < 2; $i++) 
-        {
-            Post::create([
-                'title'        => fake()->sentence(),
-                'content'      => fake()->paragraph(),
-                'category'     => fake()->word(),
-                'is_active'    => fake()->boolean(),
-                'published_at' => now(),
-            ]);
-        }
+        //------------------------------------ Crear 100 posts
+        Post::factory(100)->create();
     }
 }
