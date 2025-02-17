@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel 11 - Posts - Show</title>
-</head>
-<body>
-    <h1>Aquí se mostrará el post {{$post}}</h1>
-</body>
-</html>
+<x-app-layout>
+    <x-slot:title>
+         - Posts - Show
+    </x-slot>
+
+    <x-slot:header>
+        <a href="{{ route('posts.index') }}">Volver a post</a>
+
+        <h1>Título: {{ $post->title }}</h1>
+    </x-slot>
+
+    <p>
+        <b>Categoría:</b> {{ $post->category }}
+    </p>
+
+    <p>{{ $post->content }}</p>
+</x-app-layout>

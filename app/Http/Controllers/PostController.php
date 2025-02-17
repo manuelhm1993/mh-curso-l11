@@ -20,9 +20,8 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function show($post): View
+    public function show(Post $post): View
     {
-        //compact('post'); // ['post' => $post]
         return view('posts.show', ['post' => $post]);
     }
 }

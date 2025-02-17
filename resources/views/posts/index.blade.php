@@ -1,35 +1,17 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot:title>
+         - Posts
+    </x-slot>
 
-@section('title', 'Laravel 11 - Posts')
+    <x-slot:header>
+        <h1>Listado de posts</h1>
+    </x-slot>
 
-@section('header')
-    <h1>Listado de posts</h1>
-@endsection
-
-@section('content')
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Título</th>
-                <th>Contenido</th>
-                <th>Categoría</th>
-                <th>Fecha de publicación</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach ($posts as $post)
-            <tr>
-                <th>{{ $post->id }}</th>
-                <td>{{ $post->title }}</td>
-                <td>{{ $post->content }}</td>
-                <td>{{ $post->category }}</td>
-                <td>{{ $post->published_at->format('d/m/Y') }}</td>
-                <td>{{ $post->is_active ? 'Activo' : 'Inactivo' }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-@endsection
+    <ul>
+        @foreach ($posts as $post)
+            <li>
+                <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
+            </li>
+        @endforeach
+    </ul>
+</x-app-layout>

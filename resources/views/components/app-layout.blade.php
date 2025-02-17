@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel 11</title>
-
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Laravel 11 {{ $title }}</title>
 
     {{-- fontawesome --}}
     {{-- Tipografía --}}
 </head>
 <body>
-    <header></header>
+    <header>
+        {{ $header }}
+    </header>
 
-    {{ $slot }}
+    <section>
+        {{ $slot }}
+    </section>
 
     <footer></footer>
 </body>
