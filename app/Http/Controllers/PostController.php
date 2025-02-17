@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -10,7 +11,7 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->get();
 
         return view('posts.index', compact('posts'));
     }
@@ -18,6 +19,13 @@ class PostController extends Controller
     public function create(): View
     {
         return view('posts.create');
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $post = Post::create($request->all());
+
+        return redirect()->route('posts.index');
     }
 
     public function show(Post $post): View

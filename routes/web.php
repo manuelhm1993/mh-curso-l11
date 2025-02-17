@@ -14,7 +14,6 @@ Route::get('/', HomeController::class);
 Route::prefix('posts')->name('posts.')->controller(PostController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
-
-    //------------------------------------ El orden de las rutas importa por el flujo de ejecución
+    Route::post('/', 'store')->name('store');
     Route::get('/{post}', 'show')->name('show');
 });

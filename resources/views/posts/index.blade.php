@@ -5,6 +5,8 @@
 
     <x-slot:header>
         <h1>Listado de posts</h1>
+
+        <a href="{{ route('posts.create') }}">Nuevo post</a>
     </x-slot>
 
     <ul>

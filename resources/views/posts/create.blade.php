@@ -1,11 +1,39 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel 11 - Posts - Create</title>
-</head>
-<body>
-    <h1>Aquí se mostrará el formulario para crear posts</h1>
-</body>
-</html>
+<x-app-layout>
+    <x-slot:title>
+         - Posts - Create
+    </x-slot>
+
+    <x-slot:header>
+        <a href="{{ route('posts.index') }}">Volver a post</a>
+        
+        <h1>Formulario para crear nuevo post</h1>
+    </x-slot>
+
+    <form action="{{ route('posts.store') }}" method="POST">
+        @csrf
+        
+        <label>
+            Título:
+            <input type="text" name="title" id="title" placeholder="Título del post">
+        </label>
+
+        <br><br>
+
+        <label>
+            Categoría:
+            <input type="text" name="category" id="category" placeholder="Categoría del post">
+        </label>
+
+        <br><br>
+
+        <label>
+            Contenido: 
+            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        </label>
+
+        <br><br>
+
+        <button type="submit">Crear post</button>
+        <button type="reset">Limpiar</button>
+    </form>
+</x-app-layout>
