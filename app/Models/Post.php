@@ -12,7 +12,9 @@ class Post extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['title', 'content', 'category'];
+    protected $fillable = [
+        'title', 'content', 'category', 'published_at', 'is_active'
+    ];
 
     /**
      * Setter: mutador.
@@ -24,5 +26,16 @@ class Post extends Model
             set: fn ($value) => strtolower($value), //Pasa a minúscula antes de guardar
             get: fn ($value) => ucfirst($value), //Pasa a mayúscula el primer caracter antes de devolver
         );
+    }
+
+    /**
+     * Hará un casting automático de los valores traidos de la BD
+     */
+    protected function casts(): array
+    {
+        return [
+            'published_at' => 'datetime',
+            'is_active'    => 'boolean',
+        ];
     }
 }
