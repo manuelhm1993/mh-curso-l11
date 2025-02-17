@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    public function index() 
+    public function index(): View
     {
-        return view('posts.index');
+        $posts = Post::all();
+
+        return view('posts.index', compact('posts'));
     }
 
-    public function create() 
+    public function create(): View
     {
         return view('posts.create');
     }
 
-    public function show($post) 
+    public function show($post): View
     {
         //compact('post'); // ['post' => $post]
         return view('posts.show', ['post' => $post]);

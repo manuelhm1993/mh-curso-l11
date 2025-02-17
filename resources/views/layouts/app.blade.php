@@ -16,11 +16,17 @@
     @stack('css')
 </head>
 <body>
-    <header></header>
+    <header>
+        @yield('header')
+    </header>
 
-    @yield('content') {{-- Contenido variable --}}
+    <section>
+        @yield('content') {{-- Contenido variable --}}
+    </section>
 
-    <footer></footer>
+    <footer>
+        @yield('footer')
+    </footer>
 
     @stack('js')
 </body>

@@ -1,18 +1,35 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel 11 - Posts</title>
+@extends('layouts.app')
 
-    {{-- fontawesome --}}
-    {{-- Tipografía --}}
-</head>
-<body>
-    <header></header>
+@section('title', 'Laravel 11 - Posts')
 
-    <h1>Aquí se mostrarán los posts</h1>
+@section('header')
+    <h1>Listado de posts</h1>
+@endsection
 
-    <footer></footer>
-</body>
-</html>
+@section('content')
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Título</th>
+                <th>Contenido</th>
+                <th>Categoría</th>
+                <th>Fecha de publicación</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach ($posts as $post)
+            <tr>
+                <th>{{ $post->id }}</th>
+                <td>{{ $post->title }}</td>
+                <td>{{ $post->content }}</td>
+                <td>{{ $post->category }}</td>
+                <td>{{ $post->published_at->format('d/m/Y') }}</td>
+                <td>{{ $post->is_active ? 'Activo' : 'Inactivo' }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection
