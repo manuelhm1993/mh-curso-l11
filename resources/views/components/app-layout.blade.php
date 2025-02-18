@@ -7,6 +7,12 @@
 
     {{-- fontawesome --}}
     {{-- Tipografía --}}
+
+    {{-- CDN - Tailwind --}}
+    {{-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> --}}
+
+    {{-- CDN - Bootstrap --}}
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> --}}
 </head>
 <body>
     <header>
