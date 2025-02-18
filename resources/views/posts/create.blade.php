@@ -34,6 +34,8 @@
         <br><br>
 
         <button type="submit">Crear post</button>
-        <button type="reset">Limpiar</button>
+        
+        {{-- El botón de reset debe ser de tipo input --}}
+        <input type="reset" value="Limpiar" />
     </form>
 </x-app-layout>

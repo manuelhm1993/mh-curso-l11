@@ -32,4 +32,16 @@ class PostController extends Controller
     {
         return view('posts.show', ['post' => $post]);
     }
+
+    public function edit(Post $post): View
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, Post $post): RedirectResponse
+    {
+        $post->update($request->all());
+
+        return redirect()->route('posts.show', $post->id);
+    }
 }
