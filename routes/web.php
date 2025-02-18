@@ -18,4 +18,5 @@ Route::prefix('posts')->name('posts.')->controller(PostController::class)->group
     Route::get('/{post}', 'show')->name('show');
     Route::get('/{post}/edit', 'edit')->name('edit');
     Route::put('/{post}', 'update')->name('update');
+    Route::delete('/{post}', 'destroy')->name('destroy');
 });
