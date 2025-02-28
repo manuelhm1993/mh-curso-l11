@@ -42,7 +42,7 @@ class PostController extends Controller
     {
         $post->update($request->all());
 
-        return redirect()->route('posts.show', $post->id);
+        return redirect()->route('posts.show', $post);
     }
 
     public function destroy(Post $post): RedirectResponse

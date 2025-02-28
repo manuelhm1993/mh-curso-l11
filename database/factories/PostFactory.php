@@ -16,8 +16,11 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        $title = fake()->sentence();
+
         return [
-            'title'        => fake()->sentence(),
+            'title'        => $title,
+            'slug'         => str($title)->slug('-'),
             'content'      => fake()->text(random_int(100, 1000)),
             'category'     => str()->title(fake()->word()),
             'is_active'    => fake()->boolean(),

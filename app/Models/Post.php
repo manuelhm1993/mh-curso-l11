@@ -17,7 +17,8 @@ class Post extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title', 'content', 'category', 'published_at', 'is_active'
+        'title', 'content', 'category', 
+        'published_at', 'is_active', 'slug'
     ];
 
     /**
@@ -41,5 +42,13 @@ class Post extends Model
             'published_at' => 'datetime',
             'is_active'    => 'boolean',
         ];
+    }
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 }

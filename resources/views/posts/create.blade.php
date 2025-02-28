@@ -20,6 +20,13 @@
         <br><br>
 
         <label>
+            Slug:
+            <input type="text" name="slug" id="slug" placeholder="Slug del post">
+        </label>
+
+        <br><br>
+
+        <label>
             Categoría:
             <input type="text" name="category" id="category" placeholder="Categoría del post">
         </label>
@@ -38,4 +45,28 @@
         {{-- El botón de reset debe ser de tipo input --}}
         <input type="reset" value="Limpiar" />
     </form>
+
+    @push('js')
+        <script>
+            const slugify = (str) => {
+                str = str.replace(/^\s+|\s+$/g, ''); // trim leading/trailing white space
+                str = str.toLowerCase(); // convert string to lowercase
+                str = str.replace(/[^a-z0-9 -]/g, '') // remove any non-alphanumeric characters
+                        .replace(/\s+/g, '-') // replace spaces with hyphens
+                        .replace(/-+/g, '-'); // remove consecutive hyphens
+                return str;
+            };
+
+            window.addEventListener("load", (e) => {
+                const title = document.querySelector('#title');
+                const slug = document.querySelector('#slug');
+
+                slug.readOnly = true; //Disabled enviará la información
+
+                title.addEventListener('keyup', (e) => {
+                    slug.value = slugify(title.value);
+                });
+            });
+        </script>
+    @endpush
 </x-app-layout>
