@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,14 +22,9 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StorePostRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'title'    => ['required', 'min:5', 'max:255'], //Forma alternativa de crear reglas
-            'slug'     => 'required|min:5|max:255|unique:posts', //Valida que no exista en la DB
-            'content'  => 'required',
-            'category' => 'required|max:255',
-        ]);
+        $validated = $request->validated();
 
         $post = Post::create($validated);
 
