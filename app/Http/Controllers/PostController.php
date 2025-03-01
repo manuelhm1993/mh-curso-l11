@@ -24,8 +24,8 @@ class PostController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'title'    => 'required|max:255',
-            'slug'     => 'required|max:255',
+            'title'    => ['required', 'min:5', 'max:255'], //Forma alternativa de crear reglas
+            'slug'     => 'required|min:5|max:255|unique:posts', //Valida que no exista en la DB
             'content'  => 'required',
             'category' => 'required|max:255',
         ]);
