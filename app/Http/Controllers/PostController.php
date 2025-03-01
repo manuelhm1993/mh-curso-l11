@@ -47,7 +47,14 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post): RedirectResponse
     {
-        $post->update($request->all());
+        $validated = $request->validate([
+            'title'    => ['required', 'min:5', 'max:255'], 
+            'slug'     => "required|min:5|max:255|unique:posts,slug,{$post->id}", //Ignora el registro actual
+            'content'  => 'required',
+            'category' => 'required|max:255',
+        ]);
+
+        $post->update($validated);
 
         return redirect()->route('posts.show', $post);
     }
