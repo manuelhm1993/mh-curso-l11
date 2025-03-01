@@ -7,17 +7,6 @@
         <a href="{{ route('posts.index') }}">Volver a post</a>
         
         <h1>Formulario para crear nuevo post</h1>
-
-        @if ($errors->any())
-            <div>
-                <h2>Errores</h2>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
     </x-slot>
 
     <form action="{{ route('posts.store') }}" method="POST">
@@ -29,6 +18,10 @@
             value="{{ old('title') }}">
         </label>
 
+        @error('title')
+            <p>{{ $message }}</p>
+        @enderror
+
         <br><br>
 
         <label>
@@ -36,6 +29,10 @@
             <input type="text" name="slug" id="slug" placeholder="Slug del post"
             value="{{ old('slug') }}">
         </label>
+
+        @error('slug')
+            <p>{{ $message }}</p>
+        @enderror
 
         <br><br>
 
@@ -45,12 +42,20 @@
             value="{{ old('category') }}">
         </label>
 
+        @error('category')
+            <p>{{ $message }}</p>
+        @enderror
+
         <br><br>
 
         <label>
             Contenido: 
             <textarea name="content" id="content" cols="30" rows="10">{{ old('content') }}</textarea>
         </label>
+
+        @error('content')
+            <p>{{ $message }}</p>
+        @enderror
 
         <br><br>
 
