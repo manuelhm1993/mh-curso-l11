@@ -7,6 +7,17 @@
         <a href="{{ route('posts.index') }}">Volver a post</a>
         
         <h1>Formulario para crear nuevo post</h1>
+
+        @if ($errors->any())
+            <div>
+                <h2>Errores</h2>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </x-slot>
 
     <form action="{{ route('posts.store') }}" method="POST">
@@ -14,28 +25,31 @@
         
         <label>
             Título:
-            <input type="text" name="title" id="title" placeholder="Título del post">
+            <input type="text" name="title" id="title" placeholder="Título del post"
+            value="{{ old('title') }}">
         </label>
 
         <br><br>
 
         <label>
             Slug:
-            <input type="text" name="slug" id="slug" placeholder="Slug del post">
+            <input type="text" name="slug" id="slug" placeholder="Slug del post"
+            value="{{ old('slug') }}">
         </label>
 
         <br><br>
 
         <label>
             Categoría:
-            <input type="text" name="category" id="category" placeholder="Categoría del post">
+            <input type="text" name="category" id="category" placeholder="Categoría del post"
+            value="{{ old('category') }}">
         </label>
 
         <br><br>
 
         <label>
             Contenido: 
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <textarea name="content" id="content" cols="30" rows="10">{{ old('content') }}</textarea>
         </label>
 
         <br><br>
