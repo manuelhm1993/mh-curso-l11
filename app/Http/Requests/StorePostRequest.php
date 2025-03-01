@@ -37,8 +37,20 @@ class StorePostRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required' => 'A title is required. (edited)',
+            'title.required' => 'The :attribute field is required. (edited)',
             'slug.required'  => 'A slug is required. (edited)',
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array<string, string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'title' => 'name',
         ];
     }
 }
