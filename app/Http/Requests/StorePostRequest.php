@@ -28,29 +28,4 @@ class StorePostRequest extends FormRequest
             'category' => 'required|max:255',
         ];
     }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array<string, string>
-     */
-    public function messages(): array
-    {
-        return [
-            'title.required' => 'The :attribute field is required. (edited)',
-            'slug.required'  => 'A slug is required. (edited)',
-        ];
-    }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array<string, string>
-     */
-    public function attributes(): array
-    {
-        return [
-            'title' => 'name',
-        ];
-    }
 }
