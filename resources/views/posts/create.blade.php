@@ -8,6 +8,9 @@
         
         <h1>Formulario para crear nuevo post</h1>
 
+        {{-- Forma de traducir frases con json --}}
+        {{-- {{ __('The given data was invalid.') }} --}}
+
         @if ($errors->any())
             <div>
                 <h2>Errores</h2>
