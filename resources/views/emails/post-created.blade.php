@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nuevo post</title>
-</head>
-<body>
-    <h1>Correo por aprobar</h1>
+<x-mail::message>
+{{-- No se debe indentar --}}
+{{-- Equivalente a H1 --}}
+# Correo por aprobar
 
-    <p>Se ha creado un nuevo post que necesita ser aprobado.</p>
+{{-- Equivalente a un p --}}
+<x-mail::panel>
+Se ha creado un nuevo post que necesita ser aprobado.
+</x-mail::panel>
 
-    <a href="{{ route('posts.show', $post) }}">Click para probar</a>
-</body>
-</html>
+{{-- Equivalente a un a --}}
+<x-mail::button :url="route('posts.show', $post)" color="success">
+Click para probar
+</x-mail::button>
+</x-mail::message>

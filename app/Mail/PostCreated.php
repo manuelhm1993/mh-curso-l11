@@ -42,7 +42,7 @@ class PostCreated extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.post-created', //Indica la plantilla para el mensaje
+            markdown: 'emails.post-created', //Indica la plantilla de laravel
         );
     }
 
