@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Mail\PostCreated;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -24,10 +26,16 @@ class PostController extends Controller
 
     public function store(StorePostRequest $request): RedirectResponse
     {
+        //Validación de datos
         $validated = $request->validated();
 
+        //Creación del nuevo post
         $post = Post::create($validated);
 
+        //Envío de correo
+        Mail::to('prueba@prueba.com')->send(new PostCreated());
+
+        //Redirección al listado de posts
         return redirect()->route('posts.index');
     }
 
