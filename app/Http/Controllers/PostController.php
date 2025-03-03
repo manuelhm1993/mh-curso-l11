@@ -33,7 +33,7 @@ class PostController extends Controller
         $post = Post::create($validated);
 
         //Envío de correo
-        Mail::to('prueba@prueba.com')->send(new PostCreated());
+        Mail::to('prueba@prueba.com')->send(new PostCreated($post));
 
         //Redirección al listado de posts
         return redirect()->route('posts.index');

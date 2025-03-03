@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Post;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -14,12 +15,14 @@ class PostCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public Post $post;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(Post $post)
     {
-        //
+        $this->post = $post;
     }
 
     /**
