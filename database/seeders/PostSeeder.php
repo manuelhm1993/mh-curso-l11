@@ -14,7 +14,7 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->crear_post_con_comentarios(100);   
+        $this->crear_post_con_comentarios(100);
     }
 
     //------------------------------------ Crear 100 posts
@@ -26,7 +26,7 @@ class PostSeeder extends Seeder
     //------------------------------------ Crear 100 posts con comentarios asociados
     private function crear_post_con_comentarios(int $cantidad_posts): void
     {
-        for ($i=0; $i < $cantidad_posts; $i++) 
+        for ($i = 0; $i < $cantidad_posts; $i++) 
         {
             $cantidad_comentarios = random_int(1, 10);
             $post = Post::factory()->create();
