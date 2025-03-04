@@ -13,7 +13,7 @@
         @foreach ($posts as $post)
             <li>
                 <a href="{{ route('posts.show', $post) }}">
-                    {{ $post->title }}
+                    {{ $post->title }} || Comentarios: {{ $post->comments->count() }}
                 </a>
             </li>
         @endforeach
