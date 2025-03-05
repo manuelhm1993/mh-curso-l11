@@ -38,14 +38,15 @@ class TagSeeder extends Seeder
     private function agregar_tags_a_post(): void
     {
         $posts = Post::all();
+        $n = count($this->tags);
 
         foreach ($posts as $post) 
         {
-            $n_tags = random_int(1, count($this->tags));
+            $n_tags = random_int(1, $n);
 
             for ($i = 0; $i < $n_tags; $i++) 
             {
-                $tag_id = random_int(1, $n_tags);
+                $tag_id = random_int(($i + 1), $n_tags);
 
                 if($post->tags()->where('tags.id', $tag_id)->get()->count() == 0)
                 {
