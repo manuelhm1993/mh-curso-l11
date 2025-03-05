@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Notifications\Notifiable;
 
 class Phone extends Model
@@ -18,14 +18,14 @@ class Phone extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'number', 'user_id'
+        'number', 'phoneable_id', 'phoneable_type',
     ];
     
     /**
-     * Get the user that owns the phone.
+     * Get the parent phoneable model (user or clients).
      */
-    public function user(): BelongsTo
+    public function phoneable(): MorphTo
     {
-        return $this->belongsTo(User::class);
+        return $this->morphTo();
     }
 }
