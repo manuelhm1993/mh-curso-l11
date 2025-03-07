@@ -28,11 +28,11 @@ return new class extends Migration
             $table->dropIndex('phones_phoneable_type_phoneable_id_index');
             $table->dropColumn(['phoneable_type', 'phoneable_id']);
 
-            $table->unsignedBigInteger('user_id')->after('number');
+            $table->unsignedBigInteger('user_id')->after('number')->default(1);
 
-            /*$table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('user_id')->references('id')->on('users')
                   ->onUpdate('cascade')
-                  ->onDelete('cascade');*/
+                  ->onDelete('cascade');
         });
     }
 };

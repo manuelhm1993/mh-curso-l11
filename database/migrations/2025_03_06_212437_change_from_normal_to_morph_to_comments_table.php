@@ -28,11 +28,11 @@ return new class extends Migration
             $table->dropIndex('comments_commentable_type_commentable_id_index');
             $table->dropColumn(['commentable_type', 'commentable_id']);
 
-            $table->unsignedBigInteger('post_id')->after('content');
+            $table->unsignedBigInteger('post_id')->after('content')->default(1);
 
-            /*$table->foreign('post_id')->references('id')->on('posts')
+            $table->foreign('post_id')->references('id')->on('posts')
                   ->onUpdate('cascade')
-                  ->onDelete('cascade');*/
+                  ->onDelete('cascade');
         });
     }
 };
