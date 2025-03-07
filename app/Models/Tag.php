@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Tag extends Model
 {
@@ -13,10 +13,10 @@ class Tag extends Model
     protected $fillable = ['name'];
 
     /**
-     * The posts that belong to the tag.
+     * Get all of the posts that are assigned this tag.
      */
-    public function posts(): BelongsToMany
+    public function posts(): MorphToMany
     {
-        return $this->belongsToMany(Post::class)->withTimestamps();
+        return $this->morphedByMany(Post::class, 'taggable')->withTimestamps();
     }
 }
