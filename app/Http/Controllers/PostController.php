@@ -14,7 +14,8 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(10);
+        //Recupera todos los posts con sus respectivos comentarios y etiquetas
+        $posts = Post::with(['comments', 'tags'])->orderBy('id', 'desc')->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
