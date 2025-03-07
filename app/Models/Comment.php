@@ -4,21 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Comment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'content', 'post_id',
+        'content', 'commentable_id', 'commentable_type',
     ];
 
     /**
-     * Get the post that owns the comment.
+     * Get the parent commentable model (post or video).
      */
-    public function post(): BelongsTo
+    public function commentable(): MorphTo
     {
-        return $this->belongsTo(Post::class);
+        return $this->morphTo();
     }
 }

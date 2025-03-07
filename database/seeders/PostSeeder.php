@@ -31,7 +31,7 @@ class PostSeeder extends Seeder
             $cantidad_comentarios = random_int(1, 10);
             $post = Post::factory()->create();
 
-            Comment::factory()->count($cantidad_comentarios)->for($post)->create();
+            Comment::factory()->count($cantidad_comentarios)->for($post, 'commentable')->create();
         }
     }
 }
