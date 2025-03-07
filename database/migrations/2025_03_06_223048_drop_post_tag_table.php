@@ -32,6 +32,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('taggables');
+
         Schema::create('post_tag', function (Blueprint $table) {
             $table->id();
 
@@ -47,7 +49,5 @@ return new class extends Migration
 
             $table->timestamps();
         });
-
-        Schema::dropIfExists('taggables');
     }
 };

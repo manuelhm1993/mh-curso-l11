@@ -25,11 +25,14 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('comments', function (Blueprint $table) {
-            $table->foreignId('post_id')
-                  ->constrained()
+            $table->dropIndex('comments_commentable_type_commentable_id_index');
+            $table->dropColumn(['commentable_type', 'commentable_id']);
+
+            $table->unsignedBigInteger('post_id')->after('content');
+
+            /*$table->foreign('post_id')->references('id')->on('posts')
                   ->onUpdate('cascade')
-                  ->onDelete('cascade')
-                  ->after('content'); 
+                  ->onDelete('cascade');*/
         });
     }
 };

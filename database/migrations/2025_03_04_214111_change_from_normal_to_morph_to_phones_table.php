@@ -25,11 +25,14 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('phones', function (Blueprint $table) {
-            $table->foreignId('user_id')
-                  ->constrained()
+            $table->dropIndex('phones_phoneable_type_phoneable_id_index');
+            $table->dropColumn(['phoneable_type', 'phoneable_id']);
+
+            $table->unsignedBigInteger('user_id')->after('number');
+
+            /*$table->foreign('user_id')->references('id')->on('users')
                   ->onUpdate('cascade')
-                  ->onDelete('cascade')
-                  ->after('number'); 
+                  ->onDelete('cascade');*/
         });
     }
 };
